@@ -1,0 +1,41 @@
+Demo04: Define a component
+
+demo / source
+
+React.createClass() creates a component class, which implements a render method to return an component instance of the class. You don't need to call new on the class in order to get an instance, just use it as a normal HTML tag.
+
+var HelloMessage = React.createClass({
+  render: function() {
+    return <h1>Hello {this.props.name}</h1>;
+  }
+});
+
+ReactDOM.render(
+  <HelloMessage name="John" />,
+  document.getElementById('example')
+);
+
+Components would have attributes, and you can use this.props.[attribute] to access them, just like this.props.name of <HelloMessage name="John" /> is John.
+
+Please remember the first letter of the component's name must be capitalized, otherwise React will throw an error. For instance, HelloMessage as a component's name is OK, but helloMessage is not allowed. And a React component should only have one top child node.
+
+// wrong
+var HelloMessage = React.createClass({
+  render: function() {
+    return <h1>
+      Hello {this.props.name}
+    </h1><p>
+      some text
+    </p>;
+  }
+});
+
+// correct
+var HelloMessage = React.createClass({
+  render: function() {
+    return <div>
+      <h1>Hello {this.props.name}</h1>
+      <p>some text</p>
+    </div>;
+  }
+});

@@ -1,0 +1,14 @@
+Demo01: Render JSX
+
+demo / source
+
+The template syntax in React is called JSX. It is allowed in JSX to put HTML tags directly into JavaScript codes. ReactDOM.render() is the method which translates JSX into HTML, and renders it into the specified DOM node.
+
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('example')
+);
+
+Attention, you have to use <script type="text/babel"> to indicate JSX codes, and include browser.min.js, which is a browser version of Babel and could be get inside a babel-core@5 npm release, to actually perform the transformation in the browser.
+
+Before v0.14, React use JSTransform.js to translate <script type="text/jsx">. It has been deprecated (more info).

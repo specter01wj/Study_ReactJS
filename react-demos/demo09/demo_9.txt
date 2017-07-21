@@ -1,0 +1,30 @@
+Demo09: Form
+
+demo / source
+
+According to React's design philosophy, this.state describes the state of component and is mutated via user interactions, and this.props describes the properties of component and is stable and immutable.
+
+Since that, the value attribute of Form components, such as <input>, <textarea>, and <option>, is unaffected by any user input. If you wanted to access or update the value in response to user input, you could use the onChange event.
+
+var Input = React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function () {
+    var value = this.state.value;
+    return (
+      <div>
+        <input type="text" value={value} onChange={this.handleChange} />
+        <p>{value}</p>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(<Input/>, document.getElementById('example'));
+
+More information on official document.
+

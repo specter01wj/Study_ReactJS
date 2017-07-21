@@ -1,0 +1,30 @@
+Demo08: this.state
+
+demo / source
+
+React thinks of component as state machines, and uses this.state to hold component's state, getInitialState() to initialize this.state(invoked before a component is mounted), this.setState() to update this.state and re-render the component.
+
+var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    return (
+      <p onClick={this.handleClick}>
+        You {text} this. Click to toggle.
+      </p>
+    );
+  }
+});
+
+ReactDOM.render(
+  <LikeButton />,
+  document.getElementById('example')
+);
+
+You could use component attributes to register event handlers, just like onClick, onKeyDown, onCopy, etc. Official Document has all supported events.
+

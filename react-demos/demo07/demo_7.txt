@@ -1,0 +1,27 @@
+Demo07: Finding a DOM node
+
+demo / source
+
+Sometimes you need to reference a DOM node in a component. React gives you the ref attribute to find it.
+
+var MyComponent = React.createClass({
+  handleClick: function() {
+    this.refs.myTextInput.focus();
+  },
+  render: function() {
+    return (
+      <div>
+        <input type="text" ref="myTextInput" />
+        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+
+The desired DOM node should have a ref attribute, and this.refs.[refName] would return the corresponding DOM node. Please be mindful that you could do that only after this component has been mounted into the DOM, otherwise you get null.
+

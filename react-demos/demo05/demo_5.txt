@@ -1,0 +1,32 @@
+Demo05: this.props.children
+
+demo / source
+
+React uses this.props.children to access a component's children nodes.
+
+var NotesList = React.createClass({
+  render: function() {
+    return (
+      <ol>
+      {
+        React.Children.map(this.props.children, function (child) {
+          return <li>{child}</li>;
+        })
+      }
+      </ol>
+    );
+  }
+});
+
+ReactDOM.render(
+  <NotesList>
+    <span>hello</span>
+    <span>world</span>
+  </NotesList>,
+  document.getElementById('example')
+);
+
+Please be mindful that the value of this.props.children has three possibilities. If the component has no children node, the value is undefined; If single children node, an object; If multiple children nodes, an array. You should be careful to handle it.
+
+React gave us an utility React.Children for dealing with the this.props.children's opaque data structure. You could use React.Children.map to iterate this.props.children without worring its data type being undefined or object. Check official document for more methods React.Children offers.
+

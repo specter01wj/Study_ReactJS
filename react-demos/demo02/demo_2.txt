@@ -1,0 +1,18 @@
+Demo02: Use JavaScript in JSX
+
+demo / source
+
+You could also use JavaScript in JSX. It takes angle brackets (<) as the beginning of HTML syntax, and curly brackets ({) as the beginning of JavaScript syntax.
+
+var names = ['Alice', 'Emily', 'Kate'];
+
+ReactDOM.render(
+  <div>
+  {
+    names.map(function (name) {
+      return <div>Hello, {name}!</div>
+    })
+  }
+  </div>,
+  document.getElementById('example')
+);
